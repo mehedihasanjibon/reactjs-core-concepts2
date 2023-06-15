@@ -1,14 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   
   return (
     <div className="App">
       <Counter></Counter>
+      <ExternalUsers></ExternalUsers>
     </div>
   );
+}
+
+function ExternalUsers(){
+  const [users, setUsers] = useState([]);
+  // like: 
+  // useEffect(()=>{}, []);
+  // useEffect myfu = () => {}
+  useEffect(()=> {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => setUsers(data))
+  }, [])
+
+  return(
+    <div>
+      <h2> External Users </h2>
+      <p> {users.length}</p>
+    </div>
+  )
 }
 
 // 47.7
