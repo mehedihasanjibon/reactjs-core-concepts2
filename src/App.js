@@ -22,7 +22,7 @@ function App() {
 
 function Product(props){
   return (
-    <div>
+    <div className='product'>
       <h3> Name: {props.name}</h3>
       <p> Price: {props.price}</p>
     </div>
